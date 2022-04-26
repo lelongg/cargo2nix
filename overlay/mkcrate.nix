@@ -83,7 +83,7 @@ let
       if compileMode != "doctest" then ''
         ${rustChannel}/bin/cargo build $CARGO_VERBOSE ${optionalString release "--release"} --target ${rustHostTriple} ${buildMode} \
           ${featuresArg} ${optionalString (!hasDefaultFeature) "--no-default-features"} \
-          --message-format=json | tee .cargo-build-output
+          | tee .cargo-build-output
       ''
       # Note: Doctest doesn't yet support no-run https://github.com/rust-lang/rust/pull/83857
       # So instead of persiting the binaries with
